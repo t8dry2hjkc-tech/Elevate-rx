@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Elevate RX Pharmacy | Pueblo, CO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Elevation RX favicon.png" />
+
+  <style>
+    :root {
+      --blue: #2f6fbb;
+      --light-blue: #e4f1ff;
+      --green: #3aa97a;
+      --bg: #f7f7f7;
+      --text: #222222;
+      --muted: #666666;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* HEADER / NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(6px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-wrap img {
+      height: 40px;
+      width: auto;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: var(--blue);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 0;
+      height: 2px;
+      background-color: var(--blue);
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3.5rem 0 3rem;
+      background: linear-gradient(135deg, var(--light-blue), var(--white));
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-copy {
+      flex: 1 1 320px;
+    }
+
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      color: var(--blue);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      max-width: 28rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      background-color: var(--blue);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #255792;
+    }
+
+    .btn-secondary {
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--blue);
+      background-color: transparent;
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(47, 111, 187, 0.06);
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-media {
+      flex: 1 1 320px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 380px;
+      height: 260px;
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 3rem 0;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    section p.section-intro {
+      color: var(--muted);
+      max-width: 36rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ABOUT */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-card {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      margin-top: 1rem;
+    }
+
+    .about-card strong {
+      color: var(--green);
+    }
+
+    .about-photo {
+      width: 100%;
+      height: 240px;
+      border-radius: 18px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #dfe5ea;
+    }
+
+    /* SERVICES */
+    #services {
+      background-color: var(--white);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background-color: var(--bg);
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem 1.4rem;
+    }
+
+    .service-icon img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* INSURANCE */
+    #insurance {
+      background-color: var(--light-blue);
+    }
+
+    .insurance-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .insurance-pill {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background-color: var(--white);
+      font-size: 0.85rem;
+      color: var(--muted);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    /* CONTACT */
+    #contact .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background-color: var(--white);
+      border-radius: 16px;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-line {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-label {
+      font-weight: 600;
+    }
+
+    .contact-map {
+      width: 100%;
+      height: 230px;
+      border-radius: 16px;
+      background-color: #d3dde3;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .contact-note {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 0 2rem;
+      background-color: #111111;
+      color: #cccccc;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-links a {
+      color: #cccccc;
+    }
+
+    .footer-links a:hover {
+      color: var(--light-blue);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      #about .about-grid,
+      #contact .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        flex-direction: column;
+      }
+
+      .hero-media {
+        justify-content: center;
+      }
+
+      nav ul {
+        gap: 0.75rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-photo {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="logo-wrap">
+        <!-- logo icon -->
+        <img src="images/Elevate RX.svg" alt="Elevate RX logo" />
+        <div>
+          <div class="logo-text-main">Elevate RX</div>
+          <div class="logo-text-sub">Pueblo Pharmacy</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#insurance">Insurance</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Local care. Real people.</div>
+          <h1 class="hero-title">Here to elevate your pharmacy experience.</h1>
+          <p class="hero-sub">
+            Elevate RX is your Pueblo-based pharmacy for fast refills, friendly staff, and support you can trust.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn-primary">Request a Refill</button>
+            <button class="btn-secondary">Call the Pharmacy</button>
+          </div>
+          <p class="hero-note">
+            Walk-ins welcome. Most prescriptions ready in under 20 minutes.
+          </p>
+        </div>
+
+        <div class="hero-media">
+          <!-- hero image of staff -->
+          <div class="hero-photo"
+               style="background-image:url('images/team-of-doctors-wearing-facemasks-AWQ8JKG.jpg');">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2>About Elevate RX</h2>
+        <p class="section-intro">
+          Elevate RX is a locally owned Pueblo pharmacy focused on personal service, clear communication, and care that fits your life.
+        </p>
+        <div class="about-grid">
+          <div>
+            <p>
+              Every prescription comes with questions. Our pharmacists take the time to explain your medications, side effects, and options so you feel confident about your treatment.
+            </p>
+            <div class="about-card">
+              <p>
+                <strong>Why patients choose us:</strong><br />
+                Short wait times, friendly staff, refill reminders, and real support beyond the counter.
+              </p>
+            </div>
+          </div>
+          <div>
+            <!-- health graphic -->
+            <div class="about-photo"
+                 style="background-image:url('images/Health-Graphic.svg');">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <p class="section-intro">
+          We offer more than just refills. Elevate RX is here to support your health with simple, helpful services.
+        </p>
+        <div class="service-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="images/Prescriptions-Graphic.svg" alt="Prescriptions icon" />
+            </div>
+            <h3>Prescription Refills</h3>
+            <p>Fast, accurate refills with text or call alerts when your medication is ready.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="images/RX-graphic.svg" alt="RX icon" />
+            </div>
+            <h3>Medication Sync</h3>
+            <p>Sync your prescriptions so multiple medications are ready for pickup on the same day.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="images/Vaccines-Graphic.svg" alt="Vaccines icon" />
+            </div>
+            <h3>Vaccinations</h3>
+            <p>Stay up to date with common vaccines. Walk-ins welcome for most vaccinations.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="images/care-Graphic.svg" alt="Care icon" />
+            </div>
+            <h3>1:1 Consultations</h3>
+            <p>Schedule time with a pharmacist to review new medicines or long-term treatment plans.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSURANCE -->
+    <section id="insurance">
+      <div class="container">
+        <h2>Insurance We Accept</h2>
+        <p class="section-intro">
+          We work with most major insurance plans to keep your medications accessible and affordable.
+        </p>
+        <div class="insurance-logos">
+          <div class="insurance-pill">Medicaid</div>
+          <div class="insurance-pill">Medicare Part D</div>
+          <div class="insurance-pill">Blue Cross Blue Shield</div>
+          <div class="insurance-pill">Kaiser</div>
+          <div class="insurance-pill">UnitedHealthcare</div>
+          <div class="insurance-pill">And more…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <p class="section-intro">
+          Have a question about a prescription, insurance, or our services? Reach out or stop by.
+        </p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <p class="contact-line">
+              <span class="contact-label">Phone:</span> (000) 000-0000
+            </p>
+            <p class="contact-line">
+              <span class="contact-label">Address:</span> 1234 Example St, Pueblo, CO
+            </p>
+            <p class="contact-line">
+              <span class="contact-label">Hours:</span> Mon–Fri 9am–6pm, Sat 10am–2pm
+            </p>
+            <p class="contact-line">
+              <span class="contact-label">Refill requests:</span> Call us or use the online form.
+            </p>
+            <p class="contact-note">
+              For emergencies, please call 911 or contact your doctor directly.
+            </p>
+          </div>
+          <div>
+            <!-- map or location graphic -->
+            <div class="contact-map"
+                 style="background-image:url('images/care-Graphic.svg');">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2024 Elevate RX Pharmacy • Pueblo, CO</div>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
